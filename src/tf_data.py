@@ -1,8 +1,9 @@
 from transformers import DataCollatorForSeq2Seq
 import matplotlib.pyplot as plt
 
-def prepare_tf_datasets(tokenized_train_dataset, tokenized_val_dataset, batch_size, tokenizer, model, generation_data_collator=None):
+def prepare_tf_datasets(tokenized_train_dataset, tokenized_val_dataset, batch_size, tokenizer, model):
     data_collator = DataCollatorForSeq2Seq(tokenizer, model=model, return_tensors="tf")
+    generation_data_collator = DataCollatorForSeq2Seq(tokenizer, model=model, return_tensors="np", pad_to_multiple_of=128)
     
     tf_train_set = model.prepare_tf_dataset(
         tokenized_train_dataset,
@@ -18,13 +19,11 @@ def prepare_tf_datasets(tokenized_train_dataset, tokenized_val_dataset, batch_si
         collate_fn=data_collator,
     )
 
-    tf_generation_set = None
-    if generation_data_collator:
-        tf_generation_set = model.prepare_tf_dataset(
-            tokenized_val_dataset,
-            batch_size=batch_size,
-            shuffle=False,
-            collate_fn=generation_data_collator,
+    tf_generation_set = model.prepare_tf_dataset(
+        tokenized_val_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        collate_fn=generation_data_collator,
         )
 
     return tf_train_set, tf_val_set, tf_generation_set

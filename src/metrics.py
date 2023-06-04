@@ -1,8 +1,9 @@
-from transformers import TFAutoModelForSeq2SeqLM
+import numpy as np
 from datasets import load_metric
 import nltk
 
-def evaluate_model(model, tokenizer, dataset, metric):
+
+def evaluate_model(tokenizer, metric):
     metric_fn = load_metric(metric)
 
     def metric_fn_wrapper(eval_predictions):
@@ -30,14 +31,5 @@ def evaluate_model(model, tokenizer, dataset, metric):
         result["gen_len"] = np.mean(prediction_lens)
 
         return result
-
-    tokenized_dataset = dataset.map(lambda x: preprocess_function(x, tokenizer), batched=True)
-    tf_generation_set = model.prepare_tf_dataset(
-        tokenized_dataset,
-        batch_size=batch_size,
-        shuffle=False,
-        collate_fn=generation_data_collator
-    )
-
-    evaluation_result = model.evaluate(tf_generation_set, callbacks=[metric_fn_wrapper])
-    return evaluation_result
+    
+    return metric_fn_wrapper
