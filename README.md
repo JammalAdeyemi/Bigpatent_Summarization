@@ -34,5 +34,5 @@ Contributions to the Big Patent Summarization project are welcome! If you would 
 4. Push your branch to your forked repository.
 5. Submit a pull request to the main project repository, outlining the changes you have
 
---------
+----
 I hope that the Big Patent Summarization project proves to be a valuable tool for your patent analysis and research needs. As I continue working on this project, I plan to further enhance the model's efficiency by fine-tuning the model and increasing the training dataset. With increased access to GPU resources, I aim to develop an even more powerful and accurate model. If you have any questions, encounter issues, or would like to share your suggestions, please feel free to reach out to us. We are here to assist you. Happy patent summarization!
