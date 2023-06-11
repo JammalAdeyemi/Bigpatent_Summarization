@@ -21,9 +21,9 @@ The summarization model used in Big Patent Summarization is a fine-tuned version
 For this project, I will be using the `D` category which is the Textiles; Paper category. The dataset is available in 3 different sizes: `small`, `medium` and `large`. I will be using the `small` dataset which has 10,000 train data; 560 validate&test records.
 
 ## Folder
-1. Data: The data used during the course of the project.
-2. Notebook: The notebooks used during the course of the project, including the tutorial notebook and the final notebook.
-3. src: Some functions was defined as script and saved in this folder which was then called while training the model.
+1. `Data`: The data used during the course of the project.
+2. `Notebook`: The notebooks used during the course of the project, including the tutorial notebook and the final notebook.
+3. `src`: Some functions was defined as script and saved in this folder which was then called while training the model.
 
 ## Contributing
 Contributions to the Big Patent Summarization project are welcome! If you would like to contribute, please follow these guidelines:
